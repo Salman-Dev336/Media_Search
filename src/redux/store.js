@@ -1,5 +1,5 @@
 import {configureStore} from '@reduxjs/toolkit'
-import serachSliceReducer from './features/searchSlice'
+import searchSliceReducer from './features/searchSlice'
  
 export const store = configureStore({
     reducer:{

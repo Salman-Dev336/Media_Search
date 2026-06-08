@@ -25,7 +25,7 @@ const searchSlice = createSlice({
       state.error = null;
     },
 
-    setError(satae, action) {
+    setError(state, action) {
       state.error = action.payload;
       state.loading = false;
     },
@@ -43,4 +43,4 @@ export const {
   setError,
   cleareResults,
 } = searchSlice.actions;
-export default searchSlice.reducers;
+export default searchSlice.reducer;
