@@ -14,7 +14,7 @@ const Tabs = () => {
         return (
          
           <button
-            className={`${(activeTab==element?'bg-orange-600':' bg-orange-400')} px-5 py-2 rounded-md uppercase cursor-pointer active:scale-95`}
+            className={`${(activeTab==element?'bg-orange-500':' bg-gray-600')} transition px-5 py-2 rounded-md uppercase cursor-pointer active:scale-95`}
             key={index}
             onClick={()=>{
                 dispatch(setActiveTab(element))
