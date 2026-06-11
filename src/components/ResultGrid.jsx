@@ -17,6 +17,7 @@ const ResultGrid = () => {
 
   useEffect(
     function () {
+      if(!query) return 
       const getData = async () => {
         try {
           dispatch(setLoading());
@@ -44,7 +45,7 @@ const ResultGrid = () => {
           // console.log(data);
           dispatch(setResults(data));
         } catch (err) {
-          dispatch(setError(err));
+          dispatch(setError(err.message));
         }
       };
       getData();
@@ -57,7 +58,9 @@ const ResultGrid = () => {
   return (
     <div>
       {results.map((items, index) => {
-        return <h1>{items.title}</h1>
+        return <div key={index}> 
+          {items.title}
+        </div>
       })}
     </div>
   );
