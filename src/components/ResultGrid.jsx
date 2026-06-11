@@ -8,6 +8,7 @@ import {
 } from "../redux/features/searchSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import ResultCard from "./ResultCard";
 
 const ResultGrid = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const ResultGrid = () => {
         try {
           dispatch(setLoading());
           let data;
-          if (activeTab == "photos") {
+          if (activeTab === "photos") {
             let response = await fetchPhotos(query);
             data = response.results.map((items) => ({
               id: items.id,
@@ -32,7 +33,7 @@ const ResultGrid = () => {
               src: items.urls.full,
             }));
           }
-          if (activeTab == "videos") {
+          if (activeTab === "videos") {
             let response = await fetchVideos(query);
             data = response.videos.map((items) => ({
               id: items.id,
@@ -44,8 +45,10 @@ const ResultGrid = () => {
           }
           // console.log(data);
           dispatch(setResults(data));
+          dispatch(setLoading(false));
         } catch (err) {
           dispatch(setError(err.message));
+              dispatch(setLoading(false));
         }
       };
       getData();
@@ -56,10 +59,10 @@ const ResultGrid = () => {
   if (error) return <h1>Error </h1>;
   if (loading) return <h1>loading...</h1>;
   return (
-    <div>
+    <div className="flex flex-wrap gap-5 ">
       {results.map((items, index) => {
         return <div key={index}> 
-          {items.title}
+          < ResultCard items={items} />
         </div>
       })}
     </div>
