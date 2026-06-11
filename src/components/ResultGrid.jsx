@@ -14,20 +14,23 @@ const ResultGrid = () => {
     (store) => store.search,
   );
 
-  let data;
-  const getData = async () => {
-    if (activeTab == "photos") {
-      data = await fetchPhotos(query);
-    }
-    if (activeTab == "videos") {
-      data = await fetchVideos(query);
-    }
-  };
-  return (
-    <div>
-      <button onClick={getData}>Get Data</button>
-    </div>
+  useEffect(
+    function () {
+      const getData = async () => {
+        let data;
+        if (activeTab == "photos") {
+          data = await fetchPhotos(query);
+        }
+        if (activeTab == "videos") {
+          data = await fetchVideos(query);
+        }
+        console.log(data);
+      };
+      getData();
+    },
+    [query, activeTab],
   );
+  return <div></div>;
 };
 
 export default ResultGrid;
