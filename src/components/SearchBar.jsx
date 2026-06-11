@@ -1,40 +1,51 @@
 import React, { useState } from "react";
-import {setQuery} from '../redux/features/searchSlice'
+import { setQuery } from "../redux/features/searchSlice";
 import { useDispatch } from "react-redux";
 
 const SearchBar = () => {
+  const [text, settext] = useState("");
 
-    const [text, settext] = useState('')
+  const dispatch = useDispatch();
 
-    const dispatch =useDispatch()
-    const submitHandler = (e)=>{
-        e.preventDefault()
+  const submitHandler = (e) => {
+    e.preventDefault();
 
-        dispatch(setQuery(text))
+    dispatch(setQuery(text));
 
+    settext("");
+  };
 
-        settext('')
-    }
   return (
-    <div >
+    <div className="w-full bg-black border-b border-gray-800 px-6 py-6 sticky top-0 z-50">
+      
       <form
-       onSubmit = {(e)=>{
-            submitHandler(e)
+        onSubmit={(e) => {
+          submitHandler(e);
         }}
-         className='p-10 flex gap-5 bg-gray-900' >
+        className="w-full flex items-center gap-4"
+      >
+        
         <input
-        required
-        value={text}
-        onChange={(e)=>{
-            settext(e.target.value)
-        }}
-       
-        className=" w-full border-2 px-4 py-2 text-lg rounded outline-none" type="text" placeholder="serach for photos, videos" />
-        <button className = 'active:scale-95 border-2 px-4 py-2 text-lg rounded outline-none cursor-pointer '>Search</button>
+          required
+          value={text}
+          onChange={(e) => {
+            settext(e.target.value);
+          }}
+          className="flex-1 bg-gray-900 text-white border border-gray-700 px-6 py-4 rounded-xl text-lg outline-none focus:border-white transition-all duration-300 placeholder:text-gray-500"
+          type="text"
+          placeholder="Search for photos, videos..."
+        />
+
+        <button
+          className="bg-white text-black px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-200 transition-all duration-300 active:scale-95 cursor-pointer"
+        >
+          Search
+        </button>
+
       </form>
+
     </div>
   );
 };
-
 
 export default SearchBar;
