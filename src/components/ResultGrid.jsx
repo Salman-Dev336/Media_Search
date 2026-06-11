@@ -19,10 +19,12 @@ const ResultGrid = () => {
       const getData = async () => {
         let data;
         if (activeTab == "photos") {
-          data = await fetchPhotos(query);
+          let response = await fetchPhotos(query);
+          data = response.results;
         }
         if (activeTab == "videos") {
-          data = await fetchVideos(query);
+          let response = await fetchVideos(query);
+          data = response.videos;
         }
         console.log(data);
       };
