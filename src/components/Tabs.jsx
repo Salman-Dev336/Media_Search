@@ -27,7 +27,7 @@ const Tabs = () => {
               
               ${
                 activeTab === element
-                  ? "bg-white text-black border-white shadow-lg"
+                  ? "bg-orange-500 text-black shadow-lg"
                   : "bg-gray-900 text-gray-400 border-gray-700 hover:bg-gray-800 hover:text-white"
               }`}
             >
