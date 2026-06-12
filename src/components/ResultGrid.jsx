@@ -33,6 +33,7 @@ const ResultGrid = () => {
             title: items.alt_description || "Untitled Photo",
             thumbnail: items.urls.small,
             src: items.urls.full,
+            url: items.links.html,
           }));
         }
 
@@ -45,6 +46,7 @@ const ResultGrid = () => {
             title: items.user.name,
             thumbnail: items.image,
             src: items.video_files[0].link,
+            url: items.url,
           }));
         }
 
@@ -81,7 +83,7 @@ const ResultGrid = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         
         {results.map((items) => (
-          <a href="">
+          <a href={items.url}>
             <ResultCard key={items.id} items={items} />
           </a>
         ))}
