@@ -24,10 +24,11 @@ const ResultCard = ({ items }) => {
 
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-4">
+      <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-4 flex justify-between items-center">
         <h2 className="text-white text-sm font-medium line-clamp-2">
           {items.title}
         </h2>
+        <button className="bg-orange-500 px-4 font-medium rounded text-white cursor-pointer">save</button>
       </div>
 
     </div>

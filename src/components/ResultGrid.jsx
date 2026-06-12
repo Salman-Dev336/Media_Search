@@ -83,7 +83,7 @@ const ResultGrid = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         
         {results.map((items) => (
-          <a href={items.url}>
+          <a target="_blank" href={items.url}>
             <ResultCard key={items.id} items={items} />
           </a>
         ))}
