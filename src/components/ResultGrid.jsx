@@ -61,7 +61,7 @@ const ResultGrid = () => {
 
     getData();
 
-  }, [query, activeTab]);
+  }, [query, activeTab, dispatch]);
 
   if (error)
     return (
